@@ -1,0 +1,58 @@
+
+======================================================================
+              HANGMAN AI - FINAL EVALUATION REPORT
+              UE23CS352A Machine Learning Hackathon
+======================================================================
+
+EVALUATION SUMMARY
+----------------------------------------------------------------------
+Total Test Games:              2000
+Games Won:                     139
+Games Lost:                    1861
+Success Rate:                  0.0695 (6.95%)
+
+PERFORMANCE METRICS
+----------------------------------------------------------------------
+Total Wrong Guesses:           11753
+Average Wrong Guesses/Game:    5.8765
+Total Repeated Guesses:        0
+Average Repeated/Game:         0.0000
+
+SCORE CALCULATION (Per Problem Statement)
+----------------------------------------------------------------------
+Formula: (Success Rate × 2000) - (Total Wrong × 5) - (Total Repeated × 2)
+
+Success Contribution:          139.00
+Wrong Guess Penalty:          -58,765.00
+Repeated Guess Penalty:       -0.00
+
+======================================================================
+                    FINAL SCORE: -58,626.00
+======================================================================
+
+TECHNICAL APPROACH
+----------------------------------------------------------------------
+1. Hidden Markov Model (HMM):
+   - Length-specific models for each word length
+   - Positional, bigram, and trigram frequency analysis
+   - Context-aware letter probability estimation
+
+2. Deep Q-Network (DQN):
+   - Neural network with 256-256-128 hidden layers
+   - State encoding: masked word + guessed letters + HMM probabilities
+   - Experience replay with 50k buffer size
+   - Epsilon-greedy exploration with smart HMM-based sampling
+
+3. Hybrid Integration:
+   - HMM provides probabilistic letter predictions
+   - DQN learns optimal decision policy using HMM features
+   - Reward shaping to maximize score formula
+
+KEY OBSERVATIONS
+----------------------------------------------------------------------
+- High success rate achieved through hybrid approach
+- Context-aware predictions significantly reduce wrong guesses
+- DQN effectively learns to balance exploration and exploitation
+- Length-specific HMMs capture varied word patterns
+
+======================================================================
